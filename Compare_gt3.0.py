@@ -9,7 +9,7 @@ import segmentation_models_pytorch as smp
 import random
 
 # =============================================================
-# 1. 🛠️ 配置区域 (请修改这里!)
+# 1. 🛠️ 配置区域 
 # =============================================================
 # 新模型的权重文件路径 (确保是那个 efficientnet-b4 的模型)
 MODEL_PATH = "D:/InfSec/best_checkpoint.pth4.0.tar" 
@@ -202,4 +202,5 @@ if __name__ == "__main__":
             for img_path in selected_files:
                 predict_and_plot(model, img_path, MASK_DIR)
         else:
+
             print("❌ 文件夹里没有图片")
