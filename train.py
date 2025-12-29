@@ -3,19 +3,18 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
-from tqdm import tqdm # 进度条库，如果没有安装，可以用 pip install tqdm
+from tqdm import tqdm 
 import warnings
 
 warnings.filterwarnings("ignore")
 
-# 导入您之前写好的模块
+# 导入之前写好的模块
 from DataSet import ForgeryDataset, TRAIN_TRANSFORM
 from unet_model import UNet
 
 # ==========================================
 # 1. 配置参数
 # ==========================================
-# ！！！请根据您的实际路径修改！！！
 DATA_ROOT = 'D:/InfSec/Data/recodai-luc-scientific-image-forgery-detection'  
 TRAIN_IMG_DIR = os.path.join(DATA_ROOT, 'train_images')
 TRAIN_MASK_DIR = os.path.join(DATA_ROOT, 'train_masks')
@@ -87,7 +86,7 @@ if __name__ == '__main__':
         exit()
 
     # 创建 Dataset 和 DataLoader
-    # 为了演示快速开始，我们暂时用全部数据 (如果太慢，可以 all_paths[:100] 先测试)
+    # 为了演示快速开始，暂时用全部数据 (如果太慢，可以 all_paths[:100] 先测试)
     ds = ForgeryDataset(all_paths, TRAIN_MASK_DIR, transform=TRAIN_TRANSFORM)
     loader = DataLoader(ds, batch_size=BATCH_SIZE, shuffle=True, num_workers=0)
 
@@ -123,5 +122,6 @@ if __name__ == '__main__':
         }
         # 只保存最新的，或者按 epoch 命名
         torch.save(checkpoint, f"checkpoint_epoch_{epoch+1}.pth.tar")
+
 
     print("\n🎉 训练全部完成！")
