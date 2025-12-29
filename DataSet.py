@@ -111,7 +111,7 @@ class ForgeryDataset(Dataset):
             mask = torch.from_numpy(mask)
 
         # ==========================================
-        # 🛡️ [修正] 最终维度处理 logic
+        # 🛡️ 最终维度处理 
         # ==========================================
         # 1. 如果 mask 是 2D [H, W]，加上通道维度 -> [1, H, W]
         if mask.ndim == 2:
@@ -166,4 +166,5 @@ def visualize_sample(image, mask):
         
     plt.title("Forgery Mask")
     plt.axis('off')
+
     plt.show()
