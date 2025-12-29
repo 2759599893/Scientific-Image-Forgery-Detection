@@ -6,7 +6,7 @@ import cv2
 from DataSet import ForgeryDataset, TRAIN_TRANSFORM, visualize_sample
 from Rle import rle_encode, rle_decode
 
-DATA_ROOT = 'D:/InfSec/Data/recodai-luc-scientific-image-forgery-detection' # 假设您的 train_images 和 train_masks 在当前目录下
+DATA_ROOT = 'D:/InfSec/Data/recodai-luc-scientific-image-forgery-detection' 
 TRAIN_IMG_DIR = os.path.join(DATA_ROOT, 'train_images')
 TRAIN_MASK_DIR = os.path.join(DATA_ROOT, 'train_masks')
 
@@ -53,7 +53,7 @@ def visualize_sample(image, mask):
 # ----------------------------------------------------
 if __name__ == '__main__':
     from torch.utils.data import DataLoader
-    # 确保导入了 RLE 函数 (如果您的 rle_utils.py 文件名不同，请修改这里)
+    # 确保导入了 RLE 函数 
     try:
         from Rle import rle_encode, rle_decode
     except ImportError:
@@ -93,8 +93,7 @@ if __name__ == '__main__':
     # ==========================================
     # 第二步：初始化数据集
     # ==========================================
-    # 为了演示，取前 20 张 (如果想跑全量，请去掉 [:20])
-    test_paths = all_image_paths[:20] 
+    # 为了演示，取前 20 张 
 
     print("\n正在初始化 Dataset...")
     train_dataset = ForgeryDataset(
@@ -108,7 +107,7 @@ if __name__ == '__main__':
     # ==========================================
     print("\n--- 探索性数据分析 (EDA) 与 RLE 验证 ---")
     
-    # 我们尝试找几个包含“伪造”内容的样本来测试 RLE
+    # 尝试找几个包含“伪造”内容的样本来测试 RLE
     found_forgery_sample = False
     
     # 遍历前 5 个样本 (或者直到找到一个伪造样本)
@@ -180,4 +179,5 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"❌ DataLoader 测试失败: {e}")
         import traceback
+
         traceback.print_exc()
